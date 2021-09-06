@@ -4,14 +4,14 @@ class user
 
 	public $user_id;
 	public $username;
-    public $email;
+	public $email;
 	public $password;
-    public $address;
-    public $phone_number;
+	public $address;
+	public $phone_number;
 
 
 
-	public function __construct($user_id = "", $username = "",$email = "", $password = "",$address = "",$phone_number = "")
+	public function __construct($user_id = "", $username = "", $email = "", $password = "", $address = "", $phone_number = "")
 	{
 
 		$this->user_id = mysqli_real_escape_string($GLOBALS['conn'], $user_id);
@@ -19,15 +19,15 @@ class user
 		$this->password = mysqli_real_escape_string($GLOBALS['conn'], $password);
 	}
 
-	public function toString()
-	{
-		return "user[user_id = " . $this->user_id . ",username=" . $this->username . "]";
-	}
+	// public function toString()
+	// {
+	// 	return "user[user_id = " . $this->user_id . ",username=" . $this->username . "]";
+	// }
 
 	//user
 	public function create_user()
-    {
-		$sql = "INSERT INTO `user` (`username`,`email`,`password`,`address`,,`phone_number`) VALUES ( '$objdes->username','$objdes->email','$objdes->password','$objdes->address','$this->phone_number')";
+	{
+		$sql = "INSERT INTO `user` (`username`,`email`,`password`,`address`,`phone_number`) VALUES ( '$this->username','$this->email','$this->password','$this->address','$this->phone_number')";
 		$result = mysqli_query($GLOBALS['conn'], $sql);
 		if (!$result) {
 			echo "Error" . mysqli_error($GLOBALS['conn']) . "<br>";
@@ -41,12 +41,12 @@ class user
 		// username, password
 		$sql = "SELECT * FROM `user` WHERE `username` = '$this->username' AND `password` = '$this->password'";
 		$result = mysqli_query($GLOBALS['conn'], $sql);
-		
+
 		if (!$result) {
 			echo "Error" . mysqli_error($GLOBALS['conn']) . "<br>";
 		}
 	}
-	
+
 
 
 
@@ -68,7 +68,7 @@ class user
 		}
 	}
 
-    
-//category
+
+	//category
 
 }
