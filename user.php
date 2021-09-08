@@ -4,10 +4,10 @@ class user
 
 	public $user_id;
 	public $username;
-        public $email;
+    public $email;
 	public $password;
-        public $address;
-        public $phone_number;
+    public $address;
+    public $phone_number;
 
 
 
@@ -52,7 +52,17 @@ class user
 		// print_r($sql);
 		// die;
 		if ($result) {
-           
+            if (mysqli_num_rows($result) > 0) {
+
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['password'] = $row['password'];
+				$_SESSION['address'] = $row['address'];
+				$_SESSION['phone_number'] = $row['phone_number'];
+              
+              
                 return true;
             } else {
             }
